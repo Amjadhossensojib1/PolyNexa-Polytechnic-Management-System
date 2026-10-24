@@ -1,12 +1,27 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.PolyNexa" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
 
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Base.Theme.PolyNexa"
+        parent="Theme.Material3.DayNight.NoActionBar">
+
+        <!-- Status Bar -->
         <item name="android:statusBarColor">@color/white</item>
         <item name="android:windowLightStatusBar">true</item>
+
+        <!-- Navigation Bar -->
+        <item name="android:navigationBarColor">@color/white</item>
+
+
+        <!-- Action Mode -->
+        <item name="android:windowActionModeOverlay">true</item>
+
+        <!-- Remove Default ActionBar -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
     </style>
 
-    <style name="Theme.PolyNexa" parent="Base.Theme.PolyNexa" />
+    <style name="Theme.PolyNexa"
+        parent="Base.Theme.PolyNexa" />
+
 </resources>

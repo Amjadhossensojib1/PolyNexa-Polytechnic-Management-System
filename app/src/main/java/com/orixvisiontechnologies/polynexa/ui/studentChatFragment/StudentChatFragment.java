@@ -1,4 +1,4 @@
-package com.orixvisiontechnologies.polynexa;
+package com.orixvisiontechnologies.polynexa.ui.studentChatFragment;
 
 import android.os.Bundle;
 
@@ -8,10 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class StudentNoticeFragment extends Fragment {
+import com.orixvisiontechnologies.polynexa.R;
+
+public class StudentChatFragment extends Fragment {
 
 
-    public StudentNoticeFragment() {
+    public StudentChatFragment() {
         // Required empty public constructor
     }
 
@@ -24,7 +26,7 @@ public class StudentNoticeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_student_notice, container, false);
+        View view = inflater.inflate(R.layout.fragment_student_chat, container, false);
 
         return view;
     }

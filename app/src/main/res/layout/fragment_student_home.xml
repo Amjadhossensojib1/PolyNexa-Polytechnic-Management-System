@@ -1,12 +1,406 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:columnCount="2"
-    android:padding="12dp">
+    android:background="@color/background">
 
-    <TextView style="@style/DashCard" android:text="Attendance"/>
-    <TextView style="@style/DashCard" android:text="Routine"/>
-    <TextView style="@style/DashCard" android:text="Results"/>
-    <TextView style="@style/DashCard" android:text="Notices"/>
-</GridLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/white"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imgProfile"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/app_logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/imgSettings"
+            app:layout_constraintStart_toEndOf="@id/imgProfile"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvGreeting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hi, Welcome Back !"
+                android:textColor="#111111"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="PolyNexa Polytechnic Management System"
+                android:textColor="#333333"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imgSettings"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            android:src="@drawable/ic_settings"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/contentContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mc_slidecart"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="8dp"
+                app:cardCornerRadius="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.denzcoskun.imageslider.ImageSlider
+                    android:id="@+id/image_slider"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:iss_auto_cycle="true"
+                    app:iss_delay="1500"
+                    app:iss_period="1500"
+                    app:iss_text_align="CENTER" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/academic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="15dp"
+                android:text="Academics"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mc_slidecart" />
+
+            <LinearLayout
+                android:id="@+id/academicGrid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/academic">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/menuHomework"
+                        style="@style/MenuItem"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageView
+                            style="@style/MenuIcon"
+                            android:src="@drawable/ic_homework" />
+
+                        <TextView
+                            style="@style/MenuText"
+                            android:text="Homework" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/menuClassRoutine"
+                        style="@style/MenuItem"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageView
+                            style="@style/MenuIcon"
+                            android:src="@drawable/ic_class_routine" />
+
+                        <TextView
+                            style="@style/MenuText"
+                            android:text="Class Routine" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/menuELearning"
+                        style="@style/MenuItem"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageView
+                            style="@style/MenuIcon"
+                            android:src="@drawable/ic_elearning" />
+
+                        <TextView
+                            style="@style/MenuText"
+                            android:text="E-Learning" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/menuComplain"
+                        style="@style/MenuItem"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageView
+                            style="@style/MenuIcon"
+                            android:src="@drawable/ic_complain" />
+
+                        <TextView
+                            style="@style/MenuText"
+                            android:text="Complain" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/menuLeave"
+                        style="@style/MenuItem"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageView
+                            style="@style/MenuIcon"
+                            android:src="@drawable/ic_leave" />
+
+                        <TextView
+                            style="@style/MenuText"
+                            android:text="Leave" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/menuCalendar"
+                        style="@style/MenuItem"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageView
+                            style="@style/MenuIcon"
+                            android:src="@drawable/ic_calendar" />
+
+                        <TextView
+                            style="@style/MenuText"
+                            android:text="Calendar" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/menuSyllabus"
+                        style="@style/MenuItem"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageView
+                            style="@style/MenuIcon"
+                            android:src="@drawable/ic_syllabus" />
+
+                        <TextView
+                            style="@style/MenuText"
+                            android:text="Syllabus" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/menuDailyClass"
+                        style="@style/MenuItem"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageView
+                            style="@style/MenuIcon"
+                            android:src="@drawable/ic_daily_class" />
+
+                        <TextView
+                            style="@style/MenuText"
+                            android:text="Daily Class" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvNewsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="News &amp; Updates"
+                android:textColor="#111111"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/academicGrid" />
+
+            <TextView
+                android:id="@+id/tvViewAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:padding="4dp"
+                android:text="View All"
+                android:textColor="#3F6FB5"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tvNewsTitle"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <HorizontalScrollView
+                android:id="@+id/newsScroll"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="16dp"
+                android:overScrollMode="never"
+                android:scrollbars="none"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvNewsTitle">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="12dp"
+                        app:cardBackgroundColor="@android:color/white"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="#E3E8EF"
+                        app:strokeWidth="1dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="14dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_tag"
+                                android:paddingStart="8dp"
+                                android:paddingTop="2dp"
+                                android:paddingEnd="8dp"
+                                android:paddingBottom="2dp"
+                                android:text="Notice"
+                                android:textColor="#3F6FB5"
+                                android:textSize="11sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:ellipsize="end"
+                                android:maxLines="2"
+                                android:text="Notice Regarding Upcoming Parent-Teacher Meeting"
+                                android:textColor="#111111"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="6dp"
+                                android:text="Digital Nepal School  •  6 Chaitra, 2080  •  12:00 AM"
+                                android:textColor="#6B7685"
+                                android:textSize="11sp" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        app:cardBackgroundColor="@android:color/white"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="#E3E8EF"
+                        app:strokeWidth="1dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="14dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_tag"
+                                android:paddingStart="8dp"
+                                android:paddingTop="2dp"
+                                android:paddingEnd="8dp"
+                                android:paddingBottom="2dp"
+                                android:text="Notice"
+                                android:textColor="#3F6FB5"
+                                android:textSize="11sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:ellipsize="end"
+                                android:maxLines="2"
+                                android:text="Annual Sports Day Announcement"
+                                android:textColor="#111111"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="6dp"
+                                android:text="Digital Nepal School  •  8 Chaitra, 2080  •  10:00 AM"
+                                android:textColor="#6B7685"
+                                android:textSize="11sp" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
